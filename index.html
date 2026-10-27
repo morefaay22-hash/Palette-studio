@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7fb">
+  <meta name="description" content="Create beautiful color palettes for websites and UI designs. Generate, lock, copy, save, and export color palettes.">
+  <title>Palette Studio — Color Palette Creator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Palette Studio home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>palette<span class="brand-light">studio</span></span>
+      </a>
+      <nav class="top-actions" aria-label="Main navigation">
+        <a href="#how-it-works">How it works</a>
+        <button class="button button-quiet" id="savedBtn" type="button">Saved palettes <span id="savedCount" class="saved-count">0</span></button>
+        <button class="button button-quiet" id="themeBtn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
+        <button class="button button-quiet" id="resetBtn" type="button">Reset</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> COLOR PALETTE GENERATOR</div>
+        <h1>Find your next<br><span>favorite colors.</span></h1>
+        <p class="hero-copy">Create a color story for your next website, brand, or UI project. Keep the colors you love and generate the rest.</p>
+        <div class="hero-actions">
+          <button class="button button-primary" id="generateBtn" type="button"><span class="sparkle">✦</span> Generate palette <span class="shortcut">SPACE</span></button>
+          <button class="button button-outline" id="saveBtn" type="button">♡ Save palette</button>
+          <button class="button button-outline" id="exportBtn" type="button">Export palette <span aria-hidden="true">↗</span></button>
+        </div>
+        <p class="tip"><span class="tip-icon">⌘</span> Click a color to copy its HEX code · lock colors to keep them</p>
+      </section>
+
+      <section class="palette-section" aria-labelledby="palette-heading">
+        <div class="section-heading">
+          <div><p class="section-kicker">YOUR CANVAS</p><h2 id="palette-heading">A palette in progress</h2></div>
+          <div class="palette-count"><span class="live-dot"></span><span id="colorCount">5 colors</span></div>
+        </div>
+        <div class="palette-grid" id="paletteGrid" aria-live="polite"></div>
+        <div class="palette-footer">
+          <div class="footer-note"><span class="keycap">SPACE</span> to generate <span class="footer-divider">·</span> <span class="keycap">CLICK</span> a swatch to copy</div>
+          <div class="footer-actions">
+            <button class="text-button" id="addColorBtn" type="button">＋ Add color</button>
+            <button class="text-button" id="shuffleBtn" type="button">Shuffle unlocked colors <span>↻</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="preview-section">
+        <div class="preview-intro">
+          <p class="section-kicker">SEE IT IN ACTION</p>
+          <h2>Made for real interfaces.</h2>
+          <p>Preview your palette on a sample card to see how the colors work together.</p>
+          <div class="preview-legend"><span><i class="legend-dot legend-a"></i>Primary</span><span><i class="legend-dot legend-b"></i>Accent</span><span><i class="legend-dot legend-c"></i>Details</span></div>
+        </div>
+        <div class="preview-card" id="previewCard">
+          <div class="preview-card-top">
+            <div class="mini-brand"><span class="mini-brand-icon">✳</span> northstar</div>
+            <div class="mini-nav"><span>Discover</span><span>Journal</span><span class="mini-avatar">N</span></div>
+          </div>
+          <div class="preview-content">
+            <div class="preview-badge" id="previewBadge">A LITTLE MORE COLOR</div>
+            <h3 id="previewTitle">Ideas that<br>move you forward.</h3>
+            <p id="previewText">Thoughtful tools for a more creative, colorful everyday.</p>
+            <button class="preview-cta" id="previewCta" type="button">Explore the collection <span>→</span></button>
+          </div>
+          <div class="preview-orb orb-one"></div><div class="preview-orb orb-two"></div>
+        </div>
+      </section>
+
+      <section class="how-section" id="how-it-works">
+        <p class="section-kicker">SIMPLE BY DESIGN</p>
+        <h2>Good colors, less guesswork.</h2>
+        <div class="steps">
+          <article class="step-card"><span class="step-number">01</span><div class="step-icon">✦</div><h3>Generate</h3><p>Explore fresh combinations with one click until something feels right.</p></article>
+          <article class="step-card"><span class="step-number">02</span><div class="step-icon">⌑</div><h3>Lock &amp; refine</h3><p>Lock your favorite shades and keep generating colors around them.</p></article>
+          <article class="step-card"><span class="step-number">03</span><div class="step-icon">↗</div><h3>Take it with you</h3><p>Copy HEX codes, save palettes in this browser, or export your colors.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>palette<span class="brand-light">studio</span></span></a>
+      <p>Color is a feeling. Find yours.</p><span>Designed with intention · 2026</span>
+    </footer>
+  </div>
+
+  <dialog class="saved-dialog" id="savedDialog" aria-labelledby="savedTitle">
+    <div class="dialog-header"><div><p class="section-kicker">YOUR COLLECTION</p><h2 id="savedTitle">Saved palettes</h2></div><button class="icon-button" id="closeSavedBtn" type="button" aria-label="Close saved palettes">×</button></div>
+    <div class="saved-list" id="savedList"></div>
+    <p class="empty-saved" id="emptySaved">No saved palettes yet. Save a palette you love and it will appear here.</p>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
